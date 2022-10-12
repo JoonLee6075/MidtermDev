@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public float gold;
     public Text text;
     public Text text2;
-    public static int goal = 1;
+    public static int goal = 10;
     public GameObject enemy;
     public Transform spawnPoint;
     public float spawnTimer = 10;
