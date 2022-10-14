@@ -18228,6 +18228,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 752456405}
     - target: {fileID: 525723407559801624, guid: ae14e0fb400854b4ea2e27c6de5e1005, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 525723407559801624, guid: ae14e0fb400854b4ea2e27c6de5e1005, type: 3}
       propertyPath: attackRange
       value: 5
       objectReference: {fileID: 0}

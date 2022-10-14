@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             var offset = new Vector3(Random.RandomRange(-15, 15), Random.RandomRange(-15, 15), spawnPoint.transform.position.z);
             Instantiate(enemy, spawnPoint.transform.position + offset, spawnPoint.rotation);
+            Debug.Log("spawning");
             yield return new WaitForSeconds(10f);
         }
     }

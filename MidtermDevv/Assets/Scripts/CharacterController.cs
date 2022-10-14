@@ -12,8 +12,10 @@ public class CharacterController : MonoBehaviour
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
+    public LayerMask destroyLayers;
     public int damage;
     public GameManager gm;
+    public bool canMove;
     public bool canAttack = true;
    
     public bool isHorizontalMove;
@@ -35,33 +37,36 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        if(movement.x < 0)
+        if (canMove == true)
         {
-            sr.flipX = true;
-            attackPoint.position = transform.position - new Vector3(0.7f, 0, 0);
-        }
-        if(movement.x > 0)
-        {
-            sr.flipX = false;
-            attackPoint.position = transform.position + new Vector3(0.7f, 0, 0);
-        }
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if(canAttack == true)
+            if (movement.x < 0)
             {
-                anim.SetTrigger("isAttack");
-                canAttack = false;
-                StartCoroutine("AttackDelay");
+                sr.flipX = true;
+                attackPoint.position = transform.position - new Vector3(0.7f, 0, 0);
+            }
+            if (movement.x > 0)
+            {
+                sr.flipX = false;
+                attackPoint.position = transform.position + new Vector3(0.7f, 0, 0);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                if (canAttack == true)
+                {
+                    anim.SetTrigger("isAttack");
+                    canAttack = false;
+                    StartCoroutine("AttackDelay");
+
+                }
+
+
 
             }
-            
-            
-
         }
        
     }
@@ -82,14 +87,26 @@ public class CharacterController : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("attacking");
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange , enemyLayers); 
 
+        
         foreach(Collider2D enemy in hitEnemies)
         {
             
             enemy.GetComponent<EnemyScript>().TakeDamage(damage);
             enemy.GetComponent<EnemyScriptTwo>().TakeDamage(damage);
+
+        }
+    }
+    public void Break()
+    {
+        Collider2D[] hitDestroy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, destroyLayers);
+        foreach (Collider2D obj in hitDestroy)
+        {
+
+            obj.GetComponent<Destroyable>().TakeDamage(damage);
+          
 
         }
     }

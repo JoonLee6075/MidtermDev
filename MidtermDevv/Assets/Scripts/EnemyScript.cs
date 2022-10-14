@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     public float health;
     public GameObject reward;
     public int damage;
+    public bool check;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +19,28 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        if(transform.position.x - target.position.x > 0)
+        if (transform.position.x - target.position.x > 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
+        if (Vector2.Distance(this.transform.position , target.transform.position) < 10)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+
+            if (transform.position.x - target.position.x > 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+
         }
 
 
