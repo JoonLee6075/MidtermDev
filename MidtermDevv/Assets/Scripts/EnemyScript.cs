@@ -35,6 +35,7 @@ public class EnemyScript : MonoBehaviour
             if(this.gameObject.tag == "TutorialMob")
             {
                 trigger.killCount++;
+                Debug.Log("dead");
             }
             Destroy(gameObject);
             Instantiate(reward, gameObject.transform.position , reward.transform.rotation);

@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     public LayerMask enemyLayers;
     public int damage;
     public GameManager gm;
+    public bool canAttack = true;
    
     public bool isHorizontalMove;
     bool isVerticalMove;
@@ -51,7 +52,15 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            anim.SetTrigger("isAttack"); 
+            if(canAttack == true)
+            {
+                anim.SetTrigger("isAttack");
+                canAttack = false;
+                StartCoroutine("AttackDelay");
+
+            }
+            
+            
 
         }
        
@@ -73,7 +82,7 @@ public class CharacterController : MonoBehaviour
 
     public void Attack()
     {
-        
+        Debug.Log("attacking");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange , enemyLayers); 
 
         foreach(Collider2D enemy in hitEnemies)
@@ -83,5 +92,10 @@ public class CharacterController : MonoBehaviour
             enemy.GetComponent<EnemyScriptTwo>().TakeDamage(damage);
 
         }
+    }
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(3);
+        canAttack = true;
     }
 }

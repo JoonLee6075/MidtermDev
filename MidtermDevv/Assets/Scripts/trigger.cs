@@ -31,7 +31,9 @@ public class trigger : MonoBehaviour
             for(int i = 0; i < spawnPoint.Length; i++)
             {
                 Instantiate(spawnMob, spawnPoint[i].transform.position, spawnMob.transform.rotation);
+                this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
+        
     }
 }

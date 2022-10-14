@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemy;
     public Transform spawnPoint;
     public float spawnTimer = 10;
-    public static int health = 1;
+    public static int health = 100;
     public Sprite[] sprites;
     public Image healthSprite;
     public GameObject player;
@@ -22,21 +22,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("Spawn");
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
+       
         //text.text = "TOTAL GOLD OBTAINED: " + gold.ToString();
         text2.text = "TOTAL MAP FRAGMENT NEEDED " + (goal.ToString());
 
-        if(spawnTimer <= 0)
-        {
-            Spawn();
-            spawnTimer = 10;
-        }
+       
 
         if(goal <= 0)
         {
@@ -56,14 +52,20 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Spawn()
-    {
-        var offset = new Vector3(Random.RandomRange(-15, 15), Random.RandomRange(-15, 15), spawnPoint.transform.position.z);
-        Instantiate(enemy, spawnPoint.transform.position + offset, spawnPoint.rotation);
-    }
+  
 
     public void GameOver()
     {
         Debug.Log("game is over");
+    }
+
+    IEnumerator Spawn()
+    {
+        while (true)
+        {
+            var offset = new Vector3(Random.RandomRange(-15, 15), Random.RandomRange(-15, 15), spawnPoint.transform.position.z);
+            Instantiate(enemy, spawnPoint.transform.position + offset, spawnPoint.rotation);
+            yield return new WaitForSeconds(10f);
+        }
     }
 }
