@@ -353,7 +353,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1046473668}
         m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
-        m_MethodName: MoveTutorialScene
+        m_MethodName: Fade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907dd51d57b92eb44a1a515694ec99a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: {fileID: 1464265387}
 --- !u!4 &1046473669
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - TutorialMob
+  - Food
+  - Box
+  - Area
   layers:
   - Default
   - TransparentFX

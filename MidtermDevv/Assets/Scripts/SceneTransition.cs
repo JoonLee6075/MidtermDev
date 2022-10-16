@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    public GameObject fade;
+    
    
 
     public void MoveTutorialScene()
@@ -15,5 +17,12 @@ public class SceneTransition : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
+    public void Fade()
+    {
+        fade.GetComponent<Animator>().SetBool("StartButtonPressed", true);
+        Invoke("MoveMainScene", 3f);
+    }
+
+
 
 }

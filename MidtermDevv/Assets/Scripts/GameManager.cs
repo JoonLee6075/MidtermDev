@@ -6,32 +6,41 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public float gold;
-    public Text text;
-    public Text text2;
+
+    public static int food = 0;
     public static int goal = 10;
     public GameObject enemy;
     public Transform spawnPoint;
     public float spawnTimer = 10;
     public static int health = 100;
-    public Sprite[] sprites;
+    public GameObject interactionPoint;
+
     public Image healthSprite;
     public GameObject player;
     public GameObject gameEndText;
     public GameObject finalStage;
+    public int sceneNum;
  
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("Spawn");
+        if (sceneNum == 1)
+        {
+
+
+            StartCoroutine("Spawn");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        //text.text = "TOTAL GOLD OBTAINED: " + gold.ToString();
-        text2.text = "TOTAL MAP FRAGMENT NEEDED " + (goal.ToString());
-
+       
+        if(food >= 5)
+        {
+            interactionPoint.SetActive(true);
+        }
        
 
         if(goal <= 0)
@@ -42,7 +51,7 @@ public class GameManager : MonoBehaviour
 
         if(health <= 0)
         {
-            healthSprite.sprite = sprites[1];
+            
             GameOver();
             gameEndText.SetActive(true);
             Destroy(player);

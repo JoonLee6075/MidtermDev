@@ -17,6 +17,8 @@ public class Destroyable : MonoBehaviour
       if(health <= 0)
         {
             Destroy(gameObject);
+            SceneManager.brokenBox++;
+            Debug.Log(SceneManager.brokenBox);
         }
           
         
