@@ -31833,8 +31833,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 525723407559801624, guid: ae14e0fb400854b4ea2e27c6de5e1005, type: 3}
+      propertyPath: canAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525723407559801624, guid: ae14e0fb400854b4ea2e27c6de5e1005, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 525723407559801624, guid: ae14e0fb400854b4ea2e27c6de5e1005, type: 3}
       propertyPath: destroyLayers.m_Bits
@@ -80867,6 +80871,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   spawnTimer: 10
   interactionPoint: {fileID: 398160450}
+  fade: {fileID: 0}
   healthSprite: {fileID: 0}
   player: {fileID: 0}
   gameEndText: {fileID: 0}
