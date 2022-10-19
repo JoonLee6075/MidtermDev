@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject reward;
     public int damage;
     public bool check;
+    public AudioClip death;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +50,11 @@ public class EnemyScript : MonoBehaviour
             if(this.gameObject.tag == "TutorialMob")
             {
                 trigger.killCount++;
+                GameManager.killCount++;
                 Debug.Log("dead");
             }
+            GameManager.totalKill++;
+            SoundManager.Instance.PlaySound(death);
             Destroy(gameObject);
             Instantiate(reward, gameObject.transform.position , reward.transform.rotation);
         }
@@ -63,8 +67,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        
+        if(collision.gameObject.tag == "Player" && this.tag != "TutorialSlime")
         {
+            Debug.Log("asdf");
             GameManager.health--;
         }
     }

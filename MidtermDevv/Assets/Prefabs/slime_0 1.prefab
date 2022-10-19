@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 7730539282798861000}
   - component: {fileID: 7730539282798861005}
   - component: {fileID: 7730539282798861004}
-  - component: {fileID: 3510986704362820923}
   - component: {fileID: 5095414958346040331}
+  - component: {fileID: 700820902}
   m_Layer: 6
   m_Name: slime_0 1
-  m_TagString: Untagged
+  m_TagString: RedEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,18 +153,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3510986704362820923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7730539282798861003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b0d702427c30946878e280d2f018c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5095414958346040331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7730539282798861003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8687ba13d58ffb444b50d58adf2e9bd7, type: 3}
   m_Name: 
@@ -182,3 +170,21 @@ MonoBehaviour:
   health: 0
   reward: {fileID: 0}
   damage: 0
+--- !u!114 &700820902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730539282798861003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecda5bbaf15c074caa2c825095b9ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
+  bulletSpeed: 15
+  target: {fileID: 0}
+  speed: 3
+  bullet: {fileID: 1854362697673656192, guid: 3e52d0dfe0afc22468ddac3347c7b298, type: 3}
+  health: 0

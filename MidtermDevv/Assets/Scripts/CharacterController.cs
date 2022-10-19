@@ -17,6 +17,7 @@ public class CharacterController : MonoBehaviour
     public GameManager gm;
     public bool canMove;
     public bool canAttack = true;
+    public AudioClip attack;
    
     public bool isHorizontalMove;
     bool isVerticalMove;
@@ -28,6 +29,7 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rb = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
@@ -87,15 +89,21 @@ public class CharacterController : MonoBehaviour
 
     public void Attack()
     {
-        
+        SoundManager.Instance.PlaySound(attack);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange , enemyLayers); 
 
         
         foreach(Collider2D enemy in hitEnemies)
         {
+            if(enemy.gameObject.tag == "BlueEnemy" || enemy.gameObject.tag == "TutorialMob")
+            {
+                enemy.GetComponent<EnemyScript>().TakeDamage(damage);
+            }
+            if(enemy.gameObject.tag == "RedEnemy")
+            {
+                enemy.GetComponent<BossSpawn>().TakeDamage(damage);
+            }
             
-            enemy.GetComponent<EnemyScript>().TakeDamage(damage);
-            enemy.GetComponent<EnemyScriptTwo>().TakeDamage(damage);
 
         }
     }

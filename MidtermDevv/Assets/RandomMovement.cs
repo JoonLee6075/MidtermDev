@@ -14,6 +14,7 @@ public class RandomMovement : MonoBehaviour
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        
     }
     void Update()
     {
@@ -29,4 +30,6 @@ public class RandomMovement : MonoBehaviour
     {
         rb.AddForce(movement * maxSpeed);
     }
+
+
 }

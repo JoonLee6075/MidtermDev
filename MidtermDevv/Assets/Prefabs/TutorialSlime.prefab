@@ -170,3 +170,4 @@ MonoBehaviour:
   reward: {fileID: 0}
   damage: 0
   check: 0
+  death: {fileID: 8300000, guid: d278b863566ba45489de60f2311b81e7, type: 3}

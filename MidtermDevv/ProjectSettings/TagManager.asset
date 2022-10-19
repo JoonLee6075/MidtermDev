@@ -8,6 +8,8 @@ TagManager:
   - Food
   - Box
   - Area
+  - RedEnemy
+  - BlueEnemy
   layers:
   - Default
   - TransparentFX
